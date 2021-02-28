@@ -17,14 +17,12 @@ namespace Bot.Bots
 	public class EchoBot<T> : ActivityHandler where T : Dialog
 	{
 		private readonly StateService stateService;
-		private readonly QnAMakerService QnAMakerService;
 		private readonly Dialog dialog;
 
-		public EchoBot(T dialog, StateService stateService, QnAMakerService QnAMakerService)
+		public EchoBot(T dialog, StateService stateService)
 		{
-			this.dialog = dialog ?? throw new ArgumentNullException($"{nameof(dialog)} in Dialog Bot");
-			this.stateService = stateService ?? throw new ArgumentNullException($"{nameof(stateService)} in Greeting Bot Class");
-			this.QnAMakerService = QnAMakerService ?? throw new ArgumentNullException($"{nameof(QnAMakerService)} in Greeting Bot Class");
+			this.dialog = dialog ?? throw new ArgumentNullException($"{nameof(dialog)} in Echo Bot Class");
+			this.stateService = stateService ?? throw new ArgumentNullException($"{nameof(stateService)} in Echo Bot Class");
 		}
 
 		public override async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))

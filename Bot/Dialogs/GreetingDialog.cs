@@ -42,14 +42,6 @@ namespace Bot.Dialogs
 
 			if (string.IsNullOrEmpty(userProfile.Name))
 			{
-				/*
-				* If we don't have the name, then we will kick start the text prompt dialog
-				* that we have just added in the code with the ID:
-				* 
-				* AddDialog(new TextPrompt($"{nameof(GreetingDialog)}.name"));
-				* 
-				 */
-
 				return await stepContext.PromptAsync(
 					$"{nameof(GreetingDialog)}.name",
 					new PromptOptions { Prompt = MessageFactory.Text("What is your name ? ") },

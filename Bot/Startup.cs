@@ -37,8 +37,16 @@ namespace Bot
 			// Configure State
 			ConfigureState(services);
 
+			// Configure Dialogs
+			ConfigureDialogs(services);
+
 			// Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
 			services.AddTransient<IBot, EchoBot<MainDialog>>();
+		}
+
+		public void ConfigureDialogs(IServiceCollection services)
+		{
+			services.AddSingleton<MainDialog>();
 		}
 
 		public void ConfigureState(IServiceCollection services)
@@ -54,8 +62,6 @@ namespace Bot
 
 			// Create an instance of the State Service
 			services.AddSingleton<StateService>();
-
-			services.AddSingleton<QnAMakerService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
